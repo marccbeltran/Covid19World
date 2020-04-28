@@ -1,0 +1,141 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    var total = ViewData["countries"] as List<Models.TotalCases>;
+
+}
+
+
+<body class="sb-nav-fixed parallax">
+    <main>
+        <br />
+        <div class="container-fluid">
+            <div class="row padding">
+
+
+                <div class="input-group centered">
+                    <input type="text" class="form-control space" placeholder="TYPE TO SEARCH" id="search">   
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                @foreach (var item in total)
+                {
+                    {
+
+                        <div class="col-xl-3 col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <th class="text-cyan mb-0 space" style="text-transform:uppercase;"><b>@item.Country</b></th>
+                                                <th class="text-cyan mb-0" style="text-transform:uppercase;"></th>
+
+                                            </tr>
+                                            <tr>
+                                                <th class="text-gradient-lemmon space">CASES</th>
+                                                <td class="text-yellow space"><b>@item.Cases</b></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th class="text-gradient-lemmon space">TDAYCASES</th>
+                                                <td class="text-yellow space"><b>@item.TodayCases</b></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th class="text-gradient-orange space">DEATHS</th>
+                                                <td class="text-red space"><b>@item.Deaths</b></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th class="text-gradient-orange space">TDAYDEATHS</th>
+                                                <td class="text-red space"><b>@item.TodayDeaths</b></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th class="text-gradient-grass space">RECOVERED</th>
+                                                <td class="text-green space"><b>@item.Recovered</b></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th class="text-gradient-sea space">CASESXMLL</th>
+                                                <td class="text-cyan space"><b>@item.CasesPerOneMillion</b></td>
+
+                                            </tr>
+                                            <tr>
+                                                <th class="text-gradient-sea space borderless">TESTSXMLL</th>
+                                                <td class="text-cyan space borderless"><b>@item.TestsPerOneMillion</b></td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+
+    </main>
+    <footer class="py-4 mt-auto">
+        <div class="container-fluid">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted"></div>
+                <div class="text-muted">
+                    Copyright &copy; Marc CB 2020
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+
+        var search = document.getElementById("search");
+
+        search.addEventListener("keydown", function (e) {
+            if (e.keyCode === 13) {  
+                checkInput();
+            }
+        });
+
+
+        function checkInput() {
+            var query = document.getElementById('search').value;
+            window.find(query);
+            return true;
+        }
+    </script>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="~/js/highlight.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/datatables-demo.js"></script>
+    <script src="~/js/Chart.bundle.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/plugins/Chart.js/Chart.min.js"></script>
+    <script src="assets/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+
+
+</body>
+
+
+
+
